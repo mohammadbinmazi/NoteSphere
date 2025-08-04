@@ -75,7 +75,7 @@ const Dashboard = () => {
 
   const handleLogout = () => {
     localStorage.clear();
-    navigate("/");
+    navigate("/", { replace: true });
   };
 
   const filteredNotes = notes.filter(

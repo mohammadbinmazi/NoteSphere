@@ -17,7 +17,7 @@ const LoginForm = () => {
     try {
       const res = await login(email, password);
       localStorage.setItem("token", res.token);
-      navigate("/dashboard");
+      navigate("/dashboard", { replace: true });
     } catch (err) {
       setError(err.message || "Invalid email or password. Please try again.");
     } finally {

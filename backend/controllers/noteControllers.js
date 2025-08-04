@@ -11,15 +11,15 @@ const getAllNotes = async (req, res) => {
     const notes = await getNotesByUserId(userId);
     res.status(200).json(notes);
   } catch (error) {
-    console.error("error fetching the notes", error.messsage);
+    console.error("error fetching the notes", error.message);
 
-    res.status(500).json({ messsage: "server error" });
+    res.status(500).json({ message: "server error" });
   }
 };
 const createnote = async (req, res) => {
   const { title, content } = req.body;
   if (!title || !content) {
-    res.status(400).json({ message: "title and content is required" });
+    return res.status(400).json({ message: "title and content is required" });
   }
   try {
     const newNote = await createNoteInDb(req.user.id, title, content);
